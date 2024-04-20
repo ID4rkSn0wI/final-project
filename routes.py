@@ -86,6 +86,7 @@ def profile():
     img_src = 'static/img/def.png'
     if any([os.path.exists(f"static/img/{user.id}.{ext}") for ext in extensions]):
         img_src = list(filter(lambda y: os.path.exists(y), [f'static/img/{user.id}.{e}' for e in extensions]))[0]
+    logger.info(img_src)
     return render_template('profile.html', title='Профиль', name=name, surname=surname, age=age,
                            email=email, password=password, img_src=img_src)
 
@@ -138,5 +139,3 @@ def delete_cur_user():
 @app.route('/')
 def main():
     return render_template('base.html', title='Main')
-
-

@@ -1,16 +1,14 @@
 from flask import Blueprint, Flask, render_template, redirect, abort, request, make_response, jsonify
-from loguru import logger
 from wtforms import *
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from loguru import logger
-import flask_restful
 from flask_restful import reqparse, Api, Resource
 from requests import get, post, delete
 
 
 app = Flask(__name__)
 blueprint = Blueprint(
-    'api',
+    'users_api',
     __name__,
     template_folder='templates'
 )
