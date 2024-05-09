@@ -1,6 +1,59 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Лента</h2>
+    <h1 class="text-center py-4">Лента</h1>
 
+    <div class="container text-left">
+        <form action="" method="post">
+            <div class="row">
+                {{ form.hidden_tag() }}
+                <div class="col">
+                    <p>
+                        {{ form.query(class="form-control") }}<br>
+                        {% for error in form.query.errors %}
+                            <p class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </p>
+                        {% endfor %}
+                    </p>
+                 </div>
+                <div class="col-md-auto">
+                    <p>
+                        {{ form.submit(type="submit", class="btn btn-outline-success") }}
+                    </p>
+                </div>
+                <div class="col-md-auto">
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Фильтры</button>
+                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                      <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Фильтры</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                      </div>
+                      <div class="offcanvas-body">
+                        <a type="button" class="btn btn-light" href="/filters">Изменить фильтры</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="row row-cols-3 py-4">
+            {% for user in users %}
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ user.img_src }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.surname }} {{ user.name }}</h5>
+                            <p class="card-text">{{ user.about }}</p>
+                            <div style="text-align:center">
+                                <a href="/profile/{{ user.id }}" class="btn btn-primary">Открыть профиль</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

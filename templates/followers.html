@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center py-4">Подписчики</h1>
+    <div class="container">
+        <div class="row row-cols-3 py-4">
+            {% for user in users %}
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ user.img_src }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.surname }} {{ user.name }}</h5>
+                            <p class="card-text">{{ user.about }}</p>
+                            <div style="text-align:center">
+                                <a href="/profile/{{ user.id }}" class="btn btn-primary">Открыть профиль</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

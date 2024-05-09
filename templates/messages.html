@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 align="center" class="p-4">Сообщения</h2>
+    <div class="row">
+        <div class="col">
+            <div class="list-group scrollarea" style="height:600px; overflow-y:scroll; overflow-x-auto;">
+                {% for chat in chats %}
+                    {% for user in chat.chat_participates %}
+                        {% if current_user != user %}
+                            <a class="list-group-item list-group-item-action py-3 lh-tight" id="choose-{{ user.id }}" href="/message/{{ user.id }}" role="tab">
+                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                    <strong class="mb-1" style="font-size:20px;">{{ user.surname }} {{ user.name }}</strong>
+                                    {% if chat.messages %}
+                                        <small>{{ chat.messages[-1].date }}</small>
+                                    {% endif %}
+                                </div>
+                                {% if chat.messages %}
+                                    <p class="mb-1">{{ chat.messages[-1].text }}</p>
+                                {% endif %}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

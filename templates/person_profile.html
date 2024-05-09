@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if current_user.is_authenticated %}
+        <h2 class="text-center">Profile</h2>
+        <p style="text-align: center;">
+            <img src="{{ user.img_src }}" style="height: 200px; weight: 200px;" alt="">
+        </p>
+        <p class="text-center">{{ user.name }} {{ user.surname }}</p>
+        <p class="text-center">{{ user.age }} лет</p>
+        <p class="text-center">О себе: {{ user.about }}</p>
+        <p class="text-center">Пол: {{ user.sex }}</p>
+        <p class="text-center">Теги: {{ user.tags }}</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            {% if not like %}
+                <a class="btn btn-danger" href="/like/{{ user.id }}">Лайкнуть</a>
+            {% else %}
+                <a class="btn btn-danger" href="/unlike/{{ user.id }}">Убрать лайк</a>
+            {% endif %}
+            <a class="btn btn-primary" href="/message/{{ user.id }}">Написать</a>
+        </div>
+    {% else %}
+        <h1>Вы можете просматривать профили, только если авторизуетесь</h1>
+    {% endif %}
+{% endblock %}

@@ -4,11 +4,10 @@
     {% if current_user.is_authenticated %}
         <h2 class="text-center">Profile</h2>
         <p style="text-align: center;">
-            <img src="{{ img_src }}" style="height: 200px; weight: 200px;" alt="">
+            <img src="{{ current_user.img_src }}" style="height: 200px; weight: 200px;" alt="">
         </p>
-        <p class="text-center">Фамилия Имя: {{ current_user.name }} {{ current_user.surname }}</p>
-        <p class="text-center">Возраст: {{ current_user.age }} лет</p>
-        <p class="text-center">Почта: {{ current_user.email }}</p>
+        <p class="text-center">{{ current_user.name }} {{ current_user.surname }}</p>
+        <p class="text-center">{{ current_user.age }} лет</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-center">
             <a class="btn btn-primary" href="/edit_profile">Edit</a>
             <a class="btn btn-danger" href="/logout">Exit</a>

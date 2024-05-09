@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Register Form</h2>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.age_from.label }}<br>
+            {{ form.age_from(class="form-control") }}<br>
+            {% for error in form.age_from.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+         <p>
+            {{ form.age_to.label }}<br>
+            {{ form.age_to(class="form-control") }}<br>
+            {% for error in form.age_to.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.school.label }}<br>
+            {{ form.school }}<br>
+            {% for error in form.school.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.tags.label }}<br>
+            {{ form.tags }}<br>
+            {% for error in form.tags.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        {{message}}
+    </form>
+{% endblock %}

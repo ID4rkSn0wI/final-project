@@ -67,6 +67,42 @@
                 </p>
             {% endfor %}
         </p>
+        <p>
+            {{ form.about.label }}<br>
+            {{ form.about(class="form-control") }}<br>
+            {% for error in form.about.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.sex.label }}<br>
+            {{ form.sex }}<br>
+            {% for error in form.sex.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.school.label }}<br>
+            {{ form.school }}<br>
+            {% for error in form.school.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.tags.label }}<br>
+            {{ form.tags }}<br>
+            {% for error in form.tags.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
         <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
         {{message}}
     </form>
