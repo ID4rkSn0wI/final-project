@@ -1,0 +1,6 @@
+WTForms
+SQLAlchemy
+Werkzeug
+Flask
+loguru
+requests
